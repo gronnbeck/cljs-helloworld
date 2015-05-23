@@ -13,7 +13,8 @@ cljs development.
 ```sh
 heroku login
 heroku create
-heroku config:add BUILDPACK_URL=git://github.com/heroku/heroku-buildpack-clojure.git
+heroku buildpacks:set git://github.com/heroku/heroku-buildpack-clojure.git
+heroku buildpacks:add https://github.com/heroku/heroku-buildpack-nodejs.git
 heroku config:add LEIN_BUILD_TASK="cljsbuild"
 git push heroku master
 heroku ps:scale web=1
