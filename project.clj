@@ -15,6 +15,8 @@
 
   :clean-targets ["out/server/helloworld" "out/server/helloworld.js"]
 
+  :min-lein-version "2.5"
+
   :cljsbuild {
     :builds [{:id "dev"
               :source-paths ["src/server"]
