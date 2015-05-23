@@ -7,3 +7,15 @@ and
 
 Later on this project can be used as a template for getting started with
 cljs development.
+
+## Deploy to heroku
+
+```sh
+heroku login
+heroku create
+heroku config:add BUILDPACK_URL=git://github.com/heroku/heroku-buildpack-clojure.git
+heroku config:add LEIN_BUILD_TASK="cljsbuild"
+git push heroku master
+heroku ps:scale web=1
+heroku open
+```

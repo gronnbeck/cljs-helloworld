@@ -11,7 +11,7 @@
 (defn -main []
   (let [app (express)]
     (.get app "/" say-hello!)
-    (.listen app 3000 (fn []
+    (.listen app (-> node/process.env.PORT) (fn []
                         (println "Server started on port 3000")))))
 
 (set! *main-cli-fn* -main)
