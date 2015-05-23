@@ -1,11 +1,17 @@
 (ns cljs-helloworld.core
-  (:require [clojure.browser.repl :as repl]))
+  (:require [cljs.nodejs :as node]))
 
-;; (repl/connect "http://localhost:9000/repl")
+(node/enable-util-print!)
 
-(enable-console-print!)
+(def express (node/require "express"))
+
+(defn say-hello! [req res]
+  (.send res "Hello world!"))
 
 (defn -main []
-  (println "Hello world!"))
+  (let [app (express)]
+    (.get app "/" say-hello!)
+    (.listen app 3000 (fn []
+                        (println "Server started on port 3000")))))
 
 (set! *main-cli-fn* -main)
